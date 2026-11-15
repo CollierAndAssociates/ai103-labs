@@ -1,0 +1,33 @@
+# Secrets and credentials: never in a repository
+.env
+*.env
+!*.example.env
+*.key
+*.pem
+rclone.conf
+*recovery*key*
+
+# Machine-specific config in public repositories (commit the .example file instead)
+*-config.local.json
+
+# Payloads and logs
+*.vhdx
+*.7z
+*.zip
+*.tar
+*.bundle
+*.tibx
+*.sha256
+*.log
+
+# Local noise
+__pycache__/
+.venv/
+.ipynb_checkpoints/
+Thumbs.db
+desktop.ini
+.DS_Store
+*.tmp
+~$*
+.obsidian/
+labs-config.json

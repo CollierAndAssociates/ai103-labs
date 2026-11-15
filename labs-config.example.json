@@ -1,0 +1,37 @@
+{
+  "_about": "Copy this file to labs-config.json (git-ignored) and replace every REPLACE value. Never commit labs-config.json: it names your subscription. Validate with: bash infra/check-config.sh",
+
+  "azure": {
+    "subscription": "REPLACE-subscription-name-or-id",
+    "location": "eastus2",
+    "resourceGroup": "rg-ai103-labs",
+    "tags": { "purpose": "ai103-labs", "lifecycle": "delete-after-each-session" }
+  },
+
+  "foundry": {
+    "_about": "resourceName must be globally unique because it becomes the custom subdomain of the endpoint.",
+    "resourceName": "REPLACE-globally-unique-name",
+    "projectName": "ai103-lab-project",
+    "kind": "AIServices",
+    "sku": "S0"
+  },
+
+  "deployments": {
+    "_about": "One entry per model deployment. Find valid versions and SKUs with: bash infra/list-models.sh <name>. An entry whose modelVersion still starts with REPLACE is skipped.",
+    "items": [
+      {
+        "deploymentName": "gpt-5.2",
+        "modelName": "gpt-5.2",
+        "modelVersion": "REPLACE-from-list-models",
+        "modelFormat": "OpenAI",
+        "skuName": "GlobalStandard",
+        "skuCapacity": 50
+      }
+    ]
+  },
+
+  "python": {
+    "version": "3.13",
+    "condaEnv": "ai103"
+  }
+}
