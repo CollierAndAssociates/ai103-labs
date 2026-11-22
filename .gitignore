@@ -31,3 +31,6 @@ desktop.ini
 ~$*
 .obsidian/
 labs-config.json
+
+# Editor settings
+.vscode/
