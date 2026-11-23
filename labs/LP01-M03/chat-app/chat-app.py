@@ -39,6 +39,8 @@ def main():
                 continue
 
             # Get a response
+
+            # Stage 1 Coding (No Conversation Context memory)
             # completion = openai_client.chat.completions.create(
             #     model=model_deployment,
             #     messages=[
@@ -53,14 +55,31 @@ def main():
             #     ]
             # )
             # print(completion.choices[0].message.content)
-            response = openai_client.responses.create(
+
+            # Stage 2 Coding (Conversation Context Memory)
+            # response = openai_client.responses.create(
+            #     model=model_deployment,
+            #     instructions="You are a helpful AI assistant that answers questions and provides information.",
+            #     input=input_text,
+            #     previous_response_id=last_response_id,
+            # )
+            # print(response.output_text)
+            # last_response_id = response.id
+
+            # Stage 3 - (Streaming Responses)
+            stream = openai_client.responses.create(
                 model=model_deployment,
                 instructions="You are a helpful AI assistant that answers questions and provides information.",
                 input=input_text,
                 previous_response_id=last_response_id,
+                stream=True
             )
-            print(response.output_text)
-            last_response_id = response.id
+            for event in stream:
+                if event.type == "response.output_text.delta":
+                    print(event.delta, end="")
+                elif event.type == "response.completed":
+                    last_response_id = event.response.id
+            print()
 
     except Exception as ex:
         print(ex)
