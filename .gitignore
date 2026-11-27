@@ -34,3 +34,6 @@ labs-config.json
 
 # Editor settings
 .vscode/
+
+# Microsoft lab content, copied from mslearn-ai-studio
+labs/LP01-M04/tools-app/brochures/
