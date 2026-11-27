@@ -970,3 +970,29 @@ git commit -m "LP01-M04: vector store listing and clean-up scripts"
 git push
 git status --short
 ```
+
+# Module assessment
+
+Which tool should you use when a model needs to answer questions from your own uploaded policy documents?
+
+	1. web_search
+	
+	2. **file_search** - Selected
+	
+	3. code_interpreter
+
+In a function-calling workflow, what should your application do after the model returns a function_call item?
+
+	1. Wait for the model to run the function automatically
+	
+	2. **Run the function in your code and send a function_call_output back to the model** - Selected
+	
+	3. Convert the function call into a web_search request
+
+Which statement about the code_interpreter tool is correct?
+
+	1. **It can run Python code in a sandboxed runtime to help solve tasks** - Selected
+	
+	2. It can browse external websites directly during code execution
+	
+	3. It only supports file uploads and can't perform calculations
